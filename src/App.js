@@ -35,6 +35,15 @@ function App() {
     const filteredItems = items.filter((item) => item.key !== key);
     setItems(filteredItems);
   };
+  const updateItem = (text,key) =>{
+      const i = [...items]; 
+      i.forEach( item =>{
+        if(item.key === key){
+          item.text = text
+        }
+      })
+      setItems(i)
+  }
   return (
     <div className="App">
       <header>
@@ -48,7 +57,7 @@ function App() {
           <button type="submit">Add</button>
         </form>
       </header>
-      <ListItems items={items} deleteItem={deleteItem}>
+      <ListItems items={items} deleteItem={deleteItem} updateItem={updateItem}>
         {" "}
       </ListItems>
     </div>
